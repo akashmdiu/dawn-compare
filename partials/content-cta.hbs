@@ -1,0 +1,34 @@
+{{{html}}}
+
+{{#if access}}
+    {{#is "post"}}
+        {{#unless @member}}
+            <section class="single-cta">
+                <h2 class="single-cta-title">Enjoying this post? Subscribe to read more.</h2>
+		<h4 class="single-cta-title">You'll get full access to all content on this site as well as a weekly email with the latest installment of the book.</h4>
+                <button class="button single-cta-button" data-portal="signup">Subscribe now</button>
+                <br>
+                <button class="button-text single-cta-footer" data-portal="signin">Already have an account? Sign in</button>
+            </section>
+        {{/unless}}
+    {{/is}}
+{{else}}
+    <section class="single-cta">
+        {{#has visibility="paid"}}
+            <h2 class="single-cta-title">This post is for paying subscribers only</h2>
+        {{else}}
+            <h2 class="single-cta-title">Enjoying this post? Subscribe to read more.</h2>
+		<h4 class="single-cta-title">You'll get full access to all content on this site as well as a weekly email with the latest installment of the book.</h4>
+        {{/has}}
+
+        {{#if @member}}
+            {{#unless @member.paid}}
+                <button class="button single-cta-button" data-portal="account/plans">Upgrade now</button>
+            {{/unless}}
+        {{else}}
+            <button class="button single-cta-button" data-portal="signup">Subscribe now</button>
+            <br>
+            <button class="button-text single-cta-footer" data-portal="signin">Already have an account? Sign in</button>
+        {{/if}}
+    </section>
+{{/if}}
